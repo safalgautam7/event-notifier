@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+db.sqlite3-journal
+
+# Media
+/media/
+
+# Static files
+/staticfiles/
+/static/
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+*.cover
+*.py,cover
+.tox/
+.nox/
+.pytest_cache/
+
+
+# */migrations/
+# !*/migrations/__init__.py
