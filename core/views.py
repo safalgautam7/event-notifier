@@ -5,7 +5,7 @@ from .models import Event
 from rest_framework.response import Response
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
-
+from rest_framework import permissions
 
 
 class EventView(APIView):
@@ -49,10 +49,17 @@ class EventView(APIView):
         events = Event.objects.filter(user=request.user).values('id','name','event_time')
         return Response(list(events),status=status.HTTP_200_OK)
         
+from .utils import send_event_reminders
+
+class ReminderTriggerView(APIView):
+    """Trigger reminder checker manually via an endpoint"""
+    permission_classes = [permissions.IsAdminUser]  # Only admin can trigger
+
+    def post(self, request):
+        count = send_event_reminders()
+        return Response(
+            {"message": f"{count} reminder(s) sent."},
+            status=status.HTTP_200_OK
+        )
                 
                 
-    def event_checker(self,events_dict):
-        events = Event.objects.values()
-        for event in events:
-            event_time = event[event_time]
-        print(event_time)
